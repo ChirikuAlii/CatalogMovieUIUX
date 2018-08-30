@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">CatalogMovieUIUX</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">ChirikuAlii</string>
+    <string name="nav_header_subtitle" translatable="false">chiriku.ali.rhmat@gmail.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="label_favorite">Favorite</string>
+    <string name="label_upcoming">Upcoming</string>
+    <string name="label_now_playing">Now Playing</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="label_detail">Detail</string>
+    <string name="label_share">Share</string>
+</resources>

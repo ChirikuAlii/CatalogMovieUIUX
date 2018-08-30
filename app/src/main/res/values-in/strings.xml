@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CatalogMovieUIUX</string>
+    <string name="navigation_drawer_open">Buka navigation drawer</string>
+    <string name="navigation_drawer_close">Tutup navigation drawer</string>
+
+    <string name="action_settings">Pengaturan</string>
+    <string name="label_favorite">Favorit</string>
+    <string name="label_upcoming">Akan Datang</string>
+    <string name="label_now_playing">Sedang Tayang</string>
+    <string name="label_detail">Rincian</string>
+    <string name="label_share">Bagikan</string>
+</resources>
