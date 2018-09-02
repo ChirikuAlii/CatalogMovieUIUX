@@ -1,6 +1,5 @@
 package id.chirikualii.catalogmovieuiux.presentasion.ui.main.adapter;
 
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,7 +27,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 fragment = new UpcomingFragment();
                 break;
-
         }
         return fragment;
     }

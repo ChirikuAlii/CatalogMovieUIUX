@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentasion.ui.detailmovie.DetailMovieActivity" />
-        <activity android:name=".presentasion.ui.searchmovie.SearchMovieActivity"></activity>
+        <activity android:name=".presentasion.ui.searchmovie.SearchMovieActivity" />
+        <activity android:name=".presentasion.ui.favoritemovie.FavoriteMovieActivity"></activity>
     </application>
 
 </manifest>

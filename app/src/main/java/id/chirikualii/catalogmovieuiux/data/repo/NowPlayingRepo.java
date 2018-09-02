@@ -28,7 +28,8 @@ public class NowPlayingRepo {
                         its.getReleaseDate(),
                         its.getPosterPath(),
                         its.getBackdropPath(),
-                        its.getVoteAverage()
+                        its.getVoteAverage().toString(),
+                        its.getId().toString()
                 ))
                 .toList()
                 .toFlowable();

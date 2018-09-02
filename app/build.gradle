@@ -17,8 +17,8 @@ android {
         }
     }
 
-    buildTypes.each{
-        it.buildConfigField('String','MOVIE_API_KEY',API_KEY)
+    buildTypes.each {
+        it.buildConfigField('String', 'MOVIE_API_KEY', API_KEY)
     }
     compileOptions {
         targetCompatibility 1.8
@@ -71,4 +71,6 @@ dependencies {
     //glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
 }

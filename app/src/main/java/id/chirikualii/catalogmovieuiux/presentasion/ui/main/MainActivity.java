@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,8 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.chirikualii.catalogmovieuiux.BaseApp;
 import id.chirikualii.catalogmovieuiux.R;
+import id.chirikualii.catalogmovieuiux.data.db.FavoriteHelper;
 import id.chirikualii.catalogmovieuiux.di.component.ActivityComponent;
 import id.chirikualii.catalogmovieuiux.di.scope.ActivityScope;
+import id.chirikualii.catalogmovieuiux.presentasion.ui.favoritemovie.FavoriteMovieActivity;
 import id.chirikualii.catalogmovieuiux.presentasion.ui.searchmovie.SearchMovieActivity;
 import id.chirikualii.catalogmovieuiux.presentasion.ui.main.adapter.ViewPagerAdapter;
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.view_pager) ViewPager viewPager;
     @BindView(R.id.tab_layout) TabLayout tabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     break;
                 case R.id.nav_favorite:
                     //state
+                    Intent intent = new Intent(this, FavoriteMovieActivity.class);
+                    startActivity(intent);
                     break;
             }
             drawer.closeDrawer(GravityCompat.START);

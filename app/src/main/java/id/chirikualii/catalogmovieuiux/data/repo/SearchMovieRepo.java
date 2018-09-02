@@ -31,7 +31,8 @@ public class SearchMovieRepo {
                                         it.getReleaseDate(),
                                         it.getPosterPath(),
                                         it.getBackdropPath(),
-                                        it.getVoteAverage()
+                                        it.getVoteAverage().toString(),
+                                        it.getId().toString()
 
                                 )
                 )

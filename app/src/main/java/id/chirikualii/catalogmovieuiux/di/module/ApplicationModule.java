@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import id.chirikualii.catalogmovieuiux.data.ApiService;
+import id.chirikualii.catalogmovieuiux.data.db.DbHelper;
 import id.chirikualii.catalogmovieuiux.di.ApplicationContext;
 import id.chirikualii.catalogmovieuiux.di.DatabaseInfo;
 import io.reactivex.schedulers.Schedulers;
@@ -24,7 +25,7 @@ public class ApplicationModule {
     }
 
     @Provides
-    //@ApplicationContext
+    @ApplicationContext
     @Singleton
     Context providesContext(){
         return application;
@@ -58,4 +59,10 @@ public class ApplicationModule {
     Integer provideDatabaseVersion() {
         return 1;
     }
+
+    /*@Provides
+    @Singleton
+    DbHelper provideDbHelper(Context context){
+        return  new DbHelper(context,"movie.db",1);
+    }*/
 }

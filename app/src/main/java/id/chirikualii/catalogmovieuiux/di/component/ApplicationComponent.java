@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
+import id.chirikualii.catalogmovieuiux.data.db.DbHelper;
 import id.chirikualii.catalogmovieuiux.di.module.ActivityModule;
 import id.chirikualii.catalogmovieuiux.di.module.ApplicationModule;
 import id.chirikualii.catalogmovieuiux.di.module.FragmentModule;
@@ -22,5 +23,5 @@ public interface ApplicationComponent {
     FragmentComponent.Builder fragmentComponent();
     void inject(Application app);
 
-
+    DbHelper getHelper();
 }
