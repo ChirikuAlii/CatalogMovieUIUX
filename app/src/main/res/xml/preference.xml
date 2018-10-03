@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Notif">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/key_reminder_daily"
+            android:summary="Turn on/Of Daily Reminder"
+            android:title="Daily Reminder" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/key_reminder_upcoming"
+            android:summary="Turn on/Off Upcoming Reminder"
+            android:title="Upoming Reminder" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/action_settings">
+
+
+
+    </PreferenceCategory>
+</PreferenceScreen>

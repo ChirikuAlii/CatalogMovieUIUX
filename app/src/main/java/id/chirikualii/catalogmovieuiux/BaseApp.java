@@ -12,10 +12,17 @@ public class BaseApp extends Application {
     public static BaseApp get(Context context){
         return (BaseApp) context.getApplicationContext();
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        getAppComponent().inject(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        getAppComponent().inject(this);
+
     }
 
     public ApplicationComponent getAppComponent(){

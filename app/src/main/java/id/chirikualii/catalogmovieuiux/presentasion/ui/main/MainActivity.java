@@ -28,6 +28,7 @@ import id.chirikualii.catalogmovieuiux.di.scope.ActivityScope;
 import id.chirikualii.catalogmovieuiux.presentasion.ui.favoritemovie.FavoriteMovieActivity;
 import id.chirikualii.catalogmovieuiux.presentasion.ui.searchmovie.SearchMovieActivity;
 import id.chirikualii.catalogmovieuiux.presentasion.ui.main.adapter.ViewPagerAdapter;
+import id.chirikualii.catalogmovieuiux.presentasion.ui.settings.SettingsActivity;
 
 @ActivityScope
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -179,6 +180,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 

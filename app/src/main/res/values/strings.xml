@@ -17,4 +17,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="key_reminder_daily">daily_reminder</string>
+    <string name="key_reminder_upcoming">upcoming_reminder</string>
+    <string name="label_daily_reminder">Good morning! Ready to pick your new movies today</string>
+    <string name="label_daily_reminder_on">Daily Reminder is now</string>
+    <string name="label_upcoming_reminder_on">upcoming reminder is now</string>
+    <string name="label_activated">actived</string>
+    <string name="label_deactivated">deactivated</string>
 </resources>

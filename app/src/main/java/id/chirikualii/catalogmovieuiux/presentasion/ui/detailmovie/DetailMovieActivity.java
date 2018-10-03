@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,30 +38,36 @@ public class DetailMovieActivity extends AppCompatActivity  {
     @BindView(R.id.img_backdrop) ImageView imgBackdrop;
     @BindView(R.id.fab_fav) FloatingActionButton fabFav;
     boolean isFavorite;
-    @Inject
+
     FavoriteHelper helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
+        helper = new FavoriteHelper(this);
         this.bindModule();
+
         Movie movie = (Movie) getIntent().getParcelableExtra(DETAIL_MOVIE_KEY);
+        if (movie!=null){
+            txtTitle.setText(movie.getOriginalTitle());
+            txtReleaseDate.setText(movie.getReleaseDate());
+            txtOverview.setText(movie.getOverview());
+            txtVoteAverage.setText(String.valueOf(movie.getVoteAverage()));
 
+            Glide
+                    .with(this)
+                    .load("http://image.tmdb.org/t/p/w185"+movie.getUrlImagePoster())
+                    .into(imgPoster);
+
+            Glide
+                    .with(this)
+                    .load("http://image.tmdb.org/t/p/w780"+movie.getUrlImageBackdrop())
+                    .into(imgBackdrop);
+
+        }
         //bind
-        txtTitle.setText(movie.getOriginalTitle());
-        txtReleaseDate.setText(movie.getReleaseDate());
-        txtOverview.setText(movie.getOverview());
-        txtVoteAverage.setText(String.valueOf(movie.getVoteAverage()));
 
-        Glide
-                .with(this)
-                .load("http://image.tmdb.org/t/p/w185"+movie.getUrlImagePoster())
-                .into(imgPoster);
 
-        Glide
-                .with(this)
-                .load("http://image.tmdb.org/t/p/w780"+movie.getUrlImageBackdrop())
-                .into(imgBackdrop);
 
         checkIsAdded(movie);
         if(isFavorite){
@@ -71,14 +78,15 @@ public class DetailMovieActivity extends AppCompatActivity  {
             movie.setFavorite(0);
         }
 
+        Movie finalMovie = movie;
         fabFav.setOnClickListener(view -> {
-            if(movie.getFavorite()!=1){
-                new InsertDataAsync().execute(movie);
+            if(finalMovie.getFavorite()!=1){
+                new InsertDataAsync().execute(finalMovie);
                 fabFav.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite));
 
             }else {
                 fabFav.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_favorite_border));
-                new DeleteDataAsync().execute(movie);
+                new DeleteDataAsync().execute(finalMovie);
 
             }
         });

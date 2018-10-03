@@ -15,21 +15,28 @@ import javax.inject.Singleton;
 import id.chirikualii.catalogmovieuiux.di.ApplicationContext;
 import id.chirikualii.catalogmovieuiux.presentasion.model.Movie;
 
-@Singleton
+
 public class FavoriteHelper {
     private static String TABLE_NAME = DbContract.FavoriteColumns.FAVORITE_TABLE_NAME;
 
+    Context context;
+
+    public FavoriteHelper(Context context) {
+        this.context = context;
+    }
 
     DbHelper helper;
     SQLiteDatabase database;
 
-    @Inject
-    public FavoriteHelper(DbHelper helper) {
-        this.helper = helper;
+    public SQLiteDatabase getDatabase() {
+        return helper.getWritableDatabase();
     }
 
-    public FavoriteHelper open () throws SQLException{
 
+
+
+    public FavoriteHelper open () throws SQLException{
+        helper = new DbHelper(context);
         database = helper.getWritableDatabase();
         return this;
     }
@@ -66,6 +73,18 @@ public class FavoriteHelper {
         return movieArrayList;
     }
 
+    public Cursor getAllProvider() {
+        return database.query(
+                TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
     public long insert(Movie movie){
         ContentValues initialValues = new ContentValues();
 
@@ -77,16 +96,30 @@ public class FavoriteHelper {
         initialValues.put(DbContract.FavoriteColumns.FAVORITE_COLUMN_VOTE_AVERAGE,movie.getVoteAverage());
         initialValues.put(DbContract.FavoriteColumns.FAVORITE_COLUMN_ID_MOVIE,movie.getIdMovie());
         initialValues.put(DbContract.FavoriteColumns.FAVORITE_COLUMN_IS_FAVORITE,movie.getFavorite());
-
+        //insertDataFavoriteProvider(initialValues);
         return database.insert(TABLE_NAME,null,initialValues);
     }
 
+    public long insertDataFavoriteProvider(ContentValues contentValues) {
+
+        return database.insert(TABLE_NAME, null, contentValues);
+    }
+
+
     public long delete(Movie movie){
+        //deleteDataFavoriteProvider(movie.getIdMovie());
         return database.delete(
                 TABLE_NAME,
                 DbContract.FavoriteColumns.FAVORITE_COLUMN_ID_MOVIE + " = ?",
                 new String[]{movie.getIdMovie()});
 
+    }
+    public int deleteDataFavoriteProvider(String idMovie) {
+
+        return database.delete(TABLE_NAME,
+                DbContract.FavoriteColumns._ID + " = ?",
+                new String[]{String.valueOf(idMovie)}
+        );
     }
 
     public boolean itemDataAlreadyAdded(String idMovie) {
@@ -97,6 +130,25 @@ public class FavoriteHelper {
                         + " WHERE "
                         + DbContract.FavoriteColumns.FAVORITE_COLUMN_ID_MOVIE + " = ?",
                 new String[]{String.valueOf(idMovie)},
+                null
+        );
+        isDataAlreadyAdded = cursor != null && cursor.getCount() > 0;
+        if (cursor != null) {
+            cursor.close();
+        }
+        return isDataAlreadyAdded;
+    }
+
+    public boolean itemDataAlreadyAddedProvider(long idMovie) {
+        boolean isDataAlreadyAdded;
+
+        Cursor cursor = database.query(
+                TABLE_NAME,
+                null,
+                DbContract.FavoriteColumns._ID+ " = ?",
+                new String[]{String.valueOf(idMovie)},
+                null,
+                null,
                 null
         );
         isDataAlreadyAdded = cursor != null && cursor.getCount() > 0;

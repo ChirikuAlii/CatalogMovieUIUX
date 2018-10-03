@@ -13,9 +13,12 @@ import id.chirikualii.catalogmovieuiux.di.DatabaseInfo;
 
 
 import static id.chirikualii.catalogmovieuiux.data.db.DbContract.FavoriteColumns.FAVORITE_TABLE_NAME;
-@Singleton
+
 public class DbHelper extends SQLiteOpenHelper{
 
+    public DbHelper(Context context) {
+        super(context, "movie.db", null, 1);
+    }
     @Inject
     public DbHelper(@ApplicationContext Context context,
                     @DatabaseInfo String name,

@@ -27,12 +27,14 @@ public class FavoriteMovieActivity extends AppCompatActivity implements OnItemCl
     @BindView(R.id.recycler_view_favorite)
     RecyclerView recyclerView;
     List<Movie> movieList;
-    @Inject
+
     FavoriteHelper helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_favorite_movie);
+        helper = new FavoriteHelper(this);
         bindModule();
 
 
@@ -41,6 +43,7 @@ public class FavoriteMovieActivity extends AppCompatActivity implements OnItemCl
     @Override
     protected void onResume() {
         super.onResume();
+
         loadData();
         setupView();
     }
